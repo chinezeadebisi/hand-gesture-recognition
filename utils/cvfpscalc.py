@@ -1,4 +1,4 @@
-# standerd method and code from finding FPS of stream
+# standard method and code for finding FPS of stream
 
 from collections import deque
 import cv2
