@@ -3,6 +3,8 @@
 
 # To run: python main.py
 # reference script : https://google.github.io/mediapipe/solutions/hands.html
+# reference code - https://github.com/Kazuhito00/hand-gesture-recognition-using-mediapipe
+# Youtube video - https://youtu.be/f7uBsb-0sGQ
 
 import cv2
 import numpy as np
@@ -15,7 +17,7 @@ import copy
 from utils import CvFpsCalc
 import itertools
 
-# main function for all code starts from here
+# main functions for all code starts from here
 def main():
     # initilize parameters
     cap_width = 960
@@ -76,7 +78,7 @@ def main():
         results = hands.process(image)
         image.flags.writeable = True
 
-        # check if hand if found in image or not
+        # check if hand is found in image or not
         if results.multi_hand_landmarks is not None:
             # process on each hand
             for landmarks, handedness in zip(results.multi_hand_landmarks, results.multi_handedness):
@@ -110,7 +112,7 @@ def main():
     cap.release()
     cv2.destroyAllWindows()
 
-# find boundind rectangle 
+# find bounding rectangle 
 def find_bounding_rect(image, landmarks):
     image_width, image_height = image.shape[1], image.shape[0]
 
@@ -128,7 +130,7 @@ def find_bounding_rect(image, landmarks):
 
     return [x, y, x + w, y + h]
 
-# function to find hand landmark
+# The input function to find hand landmark
 def find_landmarks(image, landmarks):
     image_width, image_height = image.shape[1], image.shape[0]
 
